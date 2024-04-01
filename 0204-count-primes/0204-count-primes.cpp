@@ -28,6 +28,7 @@
 //     }
 // };
 
+// Sieve of Eratosthenes
 
 class Solution {
 public:
