@@ -44,7 +44,6 @@ int lastOccurence(vector<int>& arr, int size,int key){
 
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-         pair <int,int> p;
         int n = nums.size();
         int first = firstOccurence(nums,n,target);
         int last = lastOccurence(nums,n,target);
