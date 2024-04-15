@@ -1,34 +1,21 @@
 class Solution {
 public:
-
-    int binarySearch(int n){
-        int s = 0;
-        int e = n;
-        long long int mid = s + (e-s)/2;
-        long long int ans= -1;
-        
-        while(s<=e){
-            long long int square = mid * mid;
-            
-            if(square > n){
-                e = mid-1;
-            }
-            else if(square < n){
-                ans = mid;
-                s = mid+1;
+    int mySqrt(int x) {
+        if(x==0){
+            return 0;
+        }
+        int low = 1;
+        int high = x;
+        while(low<=high){
+            long long mid = low+(high-low)/2;
+            long long val = mid * mid;
+            if(val<=x){
+                low = mid + 1;
             }
             else{
-                return mid;
+                high = mid - 1;
             }
-            mid = s + (e-s)/2;
         }
-        return ans;
-    }
-    
-    
-    
-    
-    int mySqrt(int x) {
-        return binarySearch(x);
+        return high;
     }
 };
