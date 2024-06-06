@@ -1,9 +1,10 @@
 class Solution {
 public:
     int myAtoi(string s) {
-        if(s.length()==0) return 0;
+        if(s.length()==0) return 0; // length of string is 0
 
         int i=0;
+        // removing white spaces
          while(i<s.size() && s[i]== ' ') {
              i++;
          }     
