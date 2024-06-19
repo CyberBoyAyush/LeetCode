@@ -20,49 +20,39 @@ To minimize the waiting time for the bouquets, you need to determine the minimum
 ```cpp
 class Solution {
 public:
-    bool possible(vector<int>& bloomDay, int day, int m, int k) {
-        int n = bloomDay.size();
-        int cnt = 0, noOfBouquets = 0;
-        
-        for (int i = 0; i < n; i++) {
-            if (bloomDay[i] <= day) {
+    int getNumOfB(vector<int>& bloomDay , int mid , int k){
+        int cnt = 0;
+        int noOfB = 0; // no of bouquets
+
+        for(int i = 0; i<bloomDay.size(); i++){
+            if(bloomDay[i]<=mid){
                 cnt++;
-            } else {
-                noOfBouquets += cnt / k;
+            }
+            else{
+                cnt = 0;
+            }
+            if(cnt==k){
+                noOfB++;
                 cnt = 0;
             }
         }
-        noOfBouquets += cnt / k;
-        
-        return noOfBouquets >= m;
+        return noOfB;
     }
-    
     int minDays(vector<int>& bloomDay, int m, int k) {
-        int n = bloomDay.size();
-        if (m * k > n) {
-            return -1; // Not enough flowers to make required bouquets
-        }
-        
-        int low = INT_MAX, high = INT_MIN, ans = 0;
-        
-        // Determine the range of days (low to high) based on bloomDay array
-        for (int i = 0; i < n; i++) {
-            low = min(low, bloomDay[i]);
-            high = max(high, bloomDay[i]);
-        }
-        
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            
-            if (possible(bloomDay, mid, m, k)) {
-                ans = mid;
-                high = mid - 1; // We need minimum, so move to the left part of the array
-            } else {
-                low = mid + 1;
+        int start = 0;
+        int end = *max_element(bloomDay.begin() , bloomDay.end() ); // maximum element present in the array bloom day
+        int minDays = -1;
+        while(start<=end){
+            int mid = start + (end-start) / 2;
+            if(getNumOfB(bloomDay,mid,k) >= m){
+                minDays = mid; // mid hi hamara minDays hai
+                end = mid - 1; // we will cheeck for any other minimum day possible
+            }
+            else{
+                start = mid + 1;
             }
         }
-        
-        return ans;
+        return minDays;
     }
 };
 ```
