@@ -5,6 +5,9 @@
 class Solution {
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {
+        if(k<=1){ // edge case
+            return 0;
+        }
         int n = nums.size();
         int i = 0;
         int j = 0;
@@ -12,14 +15,16 @@ public:
         int prod = 1;
 
         while(j<n){
+            // Expansion 
             prod *= nums[j];
 
-            while(prod>=k && i <= j){ // prod>=k because we need prod<k strticly
+            //shrinking
+            while(prod>=k){ // prod>=k because we need prod<k strticly
                 prod /= nums[i];
                 i++;
             }
 
-            cnt += j-i+1; // no of possible subarrrays till j
+            cnt += (j-i)+1; // no of possible subarrrays till j
             j++;
         }
         return cnt;
