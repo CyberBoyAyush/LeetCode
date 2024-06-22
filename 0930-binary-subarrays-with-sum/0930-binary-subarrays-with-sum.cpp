@@ -22,6 +22,9 @@
 //     }
 // };
 
+
+// Optimal Code - Sliding Window
+// Tc - O(n) Sc - O(1)
 class Solution {
 public:
     int numSubarraysWithSum(vector<int>& nums, int goal) {
