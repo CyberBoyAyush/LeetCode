@@ -1,29 +1,33 @@
+// class Solution{
+//   public:
+//     int numberOfSubarrays(vector<int> &nums,int k){
+//         // Prefix Sum using Map
+//         // TC - O(n)  SC - O(n)
+//         int n = nums.size();
+
+//         // map for keeping track
+//         unordered_map<int, int> mpp;
+
+//         int res = 0;
+//         int oddCnt = 0;
+//         mpp[0] = 1; // we have already seen oddCnt 0 in past
+
+//         for (int i = 0; i < n; i++) {
+//             oddCnt += (nums[i] % 2);
+
+//             if (mpp.find(oddCnt - k) != mpp.end()) {
+//                 res += mpp[oddCnt - k];
+//             }
+
+//             mpp[oddCnt]++;
+//         }
+//         return res;
+//     }
+// };
+
 class Solution {
 public:
     int numberOfSubarrays(vector<int>& nums, int k) {
-
-        // Prefix Sum using Map
-        // TC - O(n)  SC - O(n)
-        // int n = nums.size();
-
-        // // map for keeping track
-        // unordered_map<int, int> mpp;
-
-        // int res = 0;
-        // int oddCnt = 0;
-        // mpp[0] = 1; // we have already seen oddCnt 0 in past
-
-        // for (int i = 0; i < n; i++) {
-        //     oddCnt += (nums[i] % 2);
-
-        //     if (mpp.find(oddCnt - k) != mpp.end()) {
-        //         res += mpp[oddCnt - k];
-        //     }
-
-        //     mpp[oddCnt]++;
-        // }
-        // return res;
-
         // Optimal - Using Sliding Window
         // TC - O(n) Sc- O(1)
         int n = nums.size();
