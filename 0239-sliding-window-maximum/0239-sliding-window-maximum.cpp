@@ -2,23 +2,23 @@
 // TC - O(n*k)
 // SC - O(n)
 
-// class Solution {
-// public:
-//     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-//         int n = nums.size();
-//         vector<int> ans; // storing our answer
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        int n = nums.size();
+        vector<int> ans; // storing our answer
 
-//         for(int i = 0 ; i<= n-k; i++){
-//             int maxi = INT_MIN;
-//             for(int j = i; j<i+k; j++){
-//                 maxi = max(maxi, nums[j]);
-//             }
-//             //pushing it in ans
-//             ans.push_back(maxi);
-//         }
-//         return ans;
-//     }
-// };
+        for(int i = 0 ; i<= n-k; i++){
+            int maxi = INT_MIN;
+            for(int j = i; j<i+k; j++){
+                maxi = max(maxi, nums[j]);
+            }
+            //pushing it in ans
+            ans.push_back(maxi);
+        }
+        return ans;
+    }
+};
 
 
 // Optimal Code Using Deque
