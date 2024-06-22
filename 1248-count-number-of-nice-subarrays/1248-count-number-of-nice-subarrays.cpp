@@ -41,7 +41,7 @@ public:
 
         while(j<n){
             if(nums[j] % 2 != 0){
-                //means nums[j] off hai
+                //means nums[j] odd hai
                 oddCnt ++;
                 count = 0; //Reset the count whenever we encounter a new odd number
             }
