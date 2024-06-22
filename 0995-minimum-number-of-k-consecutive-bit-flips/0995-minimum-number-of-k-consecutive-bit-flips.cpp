@@ -1,27 +1,27 @@
 // Bruteforce TLE
 // Tc - O(n*k) Sc- O(1)
 
-// class Solution {
-// public:
-//     int minKBitFlips(vector<int>& nums, int k) {
-//         int n = nums.size();
-//         int flip = 0;
-//         for(int i = 0; i<n; i++){
-//             if(nums[i] == 0){
-//                 if(i + k - 1 >= n){ // window nahi ban paa rhai last wali n cross krdiya
-//                     return -1;
-//                 }
-//                 else{
-//                     for(int j = i; j<= i+k-1; j++){
-//                         nums[j] = !nums[j]; // 0 --> 1 and 1--> 0
-//                     }
-//                     flip++;
-//                 }
-//             }
-//         }
-//         return flip;
-//     }
-// };
+class Solution {
+public:
+    int minKBitFlips(vector<int>& nums, int k) {
+        int n = nums.size();
+        int flip = 0;
+        for(int i = 0; i<n; i++){
+            if(nums[i] == 0){
+                if(i + k - 1 >= n){ // window nahi ban paa rhai last wali n cross krdiya
+                    return -1;
+                }
+                else{
+                    for(int j = i; j<= i+k-1; j++){
+                        nums[j] = !nums[j]; // 0 --> 1 and 1--> 0
+                    }
+                    flip++;
+                }
+            }
+        }
+        return flip;
+    }
+};
 
 
 // Optimal Solution - Using Queue
