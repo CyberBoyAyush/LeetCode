@@ -18,7 +18,7 @@
 // };
 
 // Binary Search
-// TC -O(log(n*m))
+// TC - O(log(n*m))
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
