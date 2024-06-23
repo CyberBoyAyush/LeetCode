@@ -127,7 +127,7 @@
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        // we ewill apply BS in shortest array only
+        // we will apply BS in shortest array only
         if(nums1.size() > nums2.size())
             return findMedianSortedArrays(nums2, nums1);
 
@@ -143,21 +143,21 @@ public:
             int py = (m+n+1) / 2 - px; 
 
             // Left side wale
-            int x1 = (px == 0) ? INT_MIN : nums1[px-1];
-            int x3 = (px == m) ? INT_MAX : nums1[px];
+            int l1 = (px == 0) ? INT_MIN : nums1[px-1];
+            int l2 = (px == m) ? INT_MAX : nums1[px];
 
             //Right side wale
-            int x2 = (py == 0) ? INT_MIN : nums2[py-1];
-            int x4 = (py == n) ? INT_MAX : nums2[py];
+            int r1 = (py == 0) ? INT_MIN : nums2[py-1];
+            int r2 = (py == n) ? INT_MAX : nums2[py];
 
-            if(x1<=x4 && x2<=x3){
+            if(l1<=r2 && r1<=l2){
                 if((m + n) % 2 == 1){ //odd
-                    return max(x1,x2);
+                    return max(l1,r1);
                 }
-                return (max(x1, x2) + min(x3, x4))/2.0; // for even
+                return (max(l1, r1) + min(l2, r2))/2.0; // for even
             }
             
-            else if(x1>x4){
+            else if(l1>r2){
                 high = px - 1; //left side jaao
                 // px and mid are same
             }
