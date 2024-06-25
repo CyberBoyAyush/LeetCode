@@ -24,14 +24,14 @@ public:
           for(int i = 0; i<s;i++){
             TreeNode* temp = q.front();// for keping track of nodes
             q.pop();
-            
+            v.push_back(temp->val);
             if(temp->left != nullptr){
                 q.push(temp->left);
             }
             if(temp->right != nullptr){
                 q.push(temp->right);
             }
-            v.push_back(temp->val);
+            
           }
           ans.push_back(v);
       }
